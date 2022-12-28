@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phuong trinh bac 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="wrapper">
+
+        <center>
+            <h1>Thêm một khoảng thời gian</h1>
+            <h2>ss:mm:hh</h2>
+        </center>
+        <p class="result" id="result">0</p>
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="form-group mt-3">
+                    <label for="second">Nhập số giây:</label>
+                    <input type="text" class="form-control" id="second" placeholder="Enter 1st second">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="minute">Nhập số phút:</label>
+                    <input type="text" class="form-control" id="minute" placeholder="Enter 1st minute">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="hour">Nhập số giờ:</label>
+                    <input type="text" class="form-control" id="hour" placeholder="Enter 1st hour">
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="form-group mt-3">
+                    <label for="second2">Nhập số giây:</label>
+                    <input type="text" class="form-control" id="second2" placeholder="Enter 2nd second">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="minute2">Nhập số phút:</label>
+                    <input type="text" class="form-control" id="minute2" placeholder="Enter 2nd minute">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="hour2">Nhập số giờ:</label>
+                    <input type="text" class="form-control" id="hour2" placeholder="Enter 2nd hour">
+                </div>
+            </div>
+        </div>
+       
+        <button type="button" class="btn btn-primary mt-3" onclick="addTwoHour()">Solve</button>
+    </div>
+</body>
+<script>
+    function addTwoHour() {
+        let second = document.getElementById('second').value;
+        let minute = document.getElementById('minute').value;
+        let hour = document.getElementById('hour').value;
+        let second2 = document.getElementById('second2').value;
+        let minute2 = document.getElementById('minute2').value;
+        let hour2 = document.getElementById('hour2').value;
+        let result = document.getElementById('result');
+        let totalSecond = parseInt(second) + parseInt(second2);
+        let totalMinute = parseInt(minute) + parseInt(minute2);
+        let totalHour = parseInt(hour) + parseInt(hour2);
+        if (totalSecond >= 60) {
+            totalMinute += 1;
+            totalSecond -= 60;
+        }
+        if (totalMinute >= 60) {
+            totalHour += 1;
+            totalMinute -= 60;
+        }
+        result.innerHTML = totalHour + ":" + totalMinute + ":" + totalSecond;
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</html>

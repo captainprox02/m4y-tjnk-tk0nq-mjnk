@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính ngày</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="wrapper">
+
+        <center>
+            <h1>Thêm một khoảng thời gian</h1>
+            <h2>DD/MM/YYYY</h2>
+        </center>
+        <p class="result" id="result">0</p>
+
+        <div class="form-group mt-3">
+            <label for="day">Nhập ngày:</label>
+            <input type="text" class="form-control" id="day" placeholder="Enter day">
+        </div>
+        <div class="form-group mt-3">
+            <label for="month">Nhập tháng:</label>
+            <input type="text" class="form-control" id="month" placeholder="Enter month">
+        </div>
+        <div class="form-group mt-3">
+            <label for="year">Nhập năm:</label>
+            <input type="text" class="form-control" id="year" placeholder="Enter year">
+        </div>
+        <button type="button" class="btn btn-primary mt-3" onclick="addADay()">Thêm 1 ngày</button>
+        <button type="button" class="btn btn-primary mt-3" onclick="addAWeek()">Thêm 1 tuần</button>
+        <button type="button" class="btn btn-primary mt-3" onclick="addAMonth()">Thêm 1 tháng</button>
+        <button type="button" class="btn btn-primary mt-3" onclick="addAYear()">Thêm 1 năm</button>
+        
+    </div>
+</body>
+<script>
+
+    function validate(day, month, year){
+        if(day < 1 || day > 31){
+            return false;
+        }
+        if(month < 1 || month > 12){
+            return false;
+        }
+        if(year < 1){
+            return false;
+        }
+        return true;
+    }
+
+    function addADay(){
+        let day = document.getElementById("day").value;
+        let month = document.getElementById("month").value;
+        let year = document.getElementById("year").value;
+        let result = document.getElementById("result");
+
+        if(!validate(day, month, year)){
+            result.innerHTML = "Invalid date";
+            return;
+        }
+        let date = new Date(year, month - 1, day);
+        date.setDate(date.getDate() + 1);
+        result.innerHTML = date.getDate() + ":" + (date.getMonth() + 1) + ":" + date.getFullYear();
+    }
+
+    function addAWeek(){
+        let day = document.getElementById("day").value;
+        let month = document.getElementById("month").value;
+        let year = document.getElementById("year").value;
+        let result = document.getElementById("result");
+        
+        if(!validate(day, month, year)){
+            result.innerHTML = "Invalid date";
+            return;
+        }
+        
+        let date = new Date(year, month - 1, day);
+        date.setDate(date.getDate() + 7);
+        result.innerHTML = date.getDate() + ":" + (date.getMonth() + 1) + ":" + date.getFullYear();
+    }
+
+    function addAMonth(){
+        let day = document.getElementById("day").value;
+        let month = document.getElementById("month").value;
+        let year = document.getElementById("year").value;
+        let result = document.getElementById("result");
+
+        if(!validate(day, month, year)){
+            result.innerHTML = "Invalid date";
+            return;
+        }
+
+        let date = new Date(year, month - 1, day);
+        date.setMonth(date.getMonth() + 1);
+        result.innerHTML = date.getDate() + ":" + (date.getMonth() + 1) + ":" + date.getFullYear();
+    }
+
+    function addAYear(){
+        let day = document.getElementById("day").value;
+        let month = document.getElementById("month").value;
+        let year = document.getElementById("year").value;
+        let result = document.getElementById("result");
+        
+        if(!validate(day, month, year)){
+            result.innerHTML = "Invalid date";
+            return;
+        }
+        
+        let date = new Date(year, month - 1, day);
+        date.setFullYear(date.getFullYear() + 1);
+        result.innerHTML = date.getDate() + ":" + (date.getMonth() + 1) + ":" + date.getFullYear();
+    }
+    
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phuong trinh bac 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="wrapper">
+
+        <center>
+            <h1>Phuong trinh bac 3</h1>
+            <h2>ax^3+ bx^2+ cx +d = 0</h2>
+        </center>
+        <p class="result" id="result">0</p>
+
+        <div class="form-group mt-3">
+            <label for="a">Value of a:</label>
+            <input type="text" class="form-control" id="a" placeholder="Enter a">
+        </div>
+        <div class="form-group mt-3">
+            <label for="b">Value of b:</label>
+            <input type="text" class="form-control" id="b" placeholder="Enter b">
+        </div>
+        <div class="form-group mt-3">
+            <label for="c">Value of c:</label>
+            <input type="text" class="form-control" id="c" placeholder="Enter c">
+        </div>
+        <div class="form-group mt-3">
+            <label for="d">Value of d:</label>
+            <input type="text" class="form-control" id="d" placeholder="Enter d">
+        </div> 
+        
+        <button type="button" class="btn btn-primary mt-3" onclick="ptb3()">Solve</button>
+        
+    </div>
+</body>
+<script>
+    function ptb3() {
+        let a = document.getElementById("a").value;
+        let b = document.getElementById("b").value;
+        let c = document.getElementById("c").value;
+        let d = document.getElementById("d").value;
+        let result = document.getElementById("result");
+        let x1, x2, x3;
+        let delta = b*b - 3*a*c;
+        let delta1 = 2*b*b*b - 9*a*b*c + 27*a*a*d;
+        if (delta == 0) {
+            x1 = -b/(3*a);
+            x2 = x3 = x1;
+        } else if (delta > 0) {
+            x1 = (-b + Math.sqrt(delta))/(3*a);
+            x2 = (-b - Math.sqrt(delta))/(3*a);
+            x3 = x1;
+        } else {
+            let t = Math.acos(-delta1/(2*Math.sqrt(-delta*delta*delta)));
+            x1 = 2*Math.sqrt(-delta)*Math.cos(t/3) - b/(3*a);
+            x2 = 2*Math.sqrt(-delta)*Math.cos((t+2*Math.PI)/3) - b/(3*a);
+            x3 = 2*Math.sqrt(-delta)*Math.cos((t+4*Math.PI)/3) - b/(3*a);
+        }
+        result.innerHTML = "x1 = " + x1 + ", x2 = " + x2 + ", x3 = " + x3;
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</html>
