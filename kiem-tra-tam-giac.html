@@ -41,15 +41,15 @@
         let c = document.getElementById("c").value;
         let result = document.getElementById("result");
         if (a == "" || b == "" || c == "") {
-            result.innerHTML = "Please enter all values";
+            result.innerHTML = "Vui lòng nhập tất cả các cạnh!";
         } else {
             a = parseInt(a);
             b = parseInt(b);
             c = parseInt(c);
             if (a + b > c && a + c > b && b + c > a) {
-                result.innerHTML = "This is a triangle";
+                result.innerHTML = "Là tãm giạc";
             } else {
-                result.innerHTML = "This is not a triangle";
+                result.innerHTML = "Không phải là tam giác";
             }
         }
     }

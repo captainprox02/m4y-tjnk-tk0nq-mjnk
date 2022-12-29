@@ -42,13 +42,13 @@
         let p = (parseInt(a) + parseInt(b) + parseInt(c)) / 2;
         let s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
         if (a == "" || b == "" || c == "") {
-            result.innerHTML = "Please enter all values";
+            result.innerHTML = "Vui lòng nhập tất cả các cạnh!";
         } else {
             a = parseInt(a);
             b = parseInt(b);
             c = parseInt(c);
             if (a + b > c && a + c > b && b + c > a) {
-                result.innerHTML = "Diện tích tam giác là: " + s;
+                result.innerHTML = "Diện tam giác là: " + s;
             } else {
                 result.innerHTML = "Không phải là tam giác";
             }
