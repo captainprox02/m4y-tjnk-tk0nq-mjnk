@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính trung bình</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <center>
+            <h1>Tính trung bình</h1>
+        </center>
+        <p class="result" id="result">0</p>
+
+
+        <label class="input-text" >Nhập khoảng giá trị: </label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="min" placeholder="Enter min">
+            <input type="text" class="form-control" id="max" placeholder="Enter max">
+        </div>
+
+
+        <div class="input-group mt-3">
+            <input type="text" class="form-control" id="numbers" placeholder="Enter numbers">
+            <button class="btn btn-primary input-group-text" type="button" id="button-add" onclick="add()">Add</button>
+        </div>
+
+        <p class="mt-3">
+            Danh sách các số đã nhập:
+        </p>
+        <ul id="numbers_list">
+
+        </ul>
+        <button class="btn btn-primary" type="button" onclick="clear()">Reset</button>
+    </div>
+</body>
+<script>
+    var numbers = [];
+    var sum = 0;
+    var avg = 0;
+
+    function average(numbers, min, max) {
+        let sum = 0;
+        let inputNumber = 0;
+        let validNumber = 0;
+        let i = 0;
+
+        while (i < numbers.length) {
+            inputNumber = parseInt(numbers[i]);
+            if (inputNumber >= min && inputNumber <= max) {
+                sum += inputNumber;
+                validNumber++;
+            }
+            i++;
+        }
+
+        if (validNumber > 0) {
+            return sum / validNumber;
+        } else {
+            return 0;
+        }
+    }
+
+    async function add() {
+        var number = document.getElementById("numbers").value;
+        var min = document.getElementById("min").value;
+        var max = document.getElementById("max").value;
+
+        if (number != "") {
+            numbers.push(number);
+            document.getElementById("numbers_list").innerHTML += "<li>" + number + "</li>";
+            document.getElementById("numbers").value = "";
+            sum = await average(numbers, min, max);
+            document.getElementById("result").innerHTML = sum;
+        }
+    }
+
+    function clear() {
+        document.getElementById("numbers_list").innerHTML = "";
+        document.getElementById("result").innerHTML = 0;
+        numbers = [];
+        sum = 0;
+        avg = 0;
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</html>
