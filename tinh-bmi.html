@@ -21,7 +21,7 @@
       <p class="result" id="result">0</p>
 
       <div class="form-group mt-3">
-        <label for="a">Value of height (m):</label>
+        <label for="a">Value of height (cm):</label>
         <input
           type="text"
           class="form-control"
@@ -46,18 +46,19 @@
   </body>
   <script>
     function ptb4() {
-      let a = document.getElementById("a").value;
+      let a = document.getElementById("a").value / 100;
       let b = document.getElementById("b").value;
       let result = document.getElementById("result");
       let BMI = b / (a * a);
       if (BMI < 18.5) {
-        result.innerHTML = "Ban dang thieu can, om va gay";
+        result.innerHTML =
+          "BMI = " + BMI.toFixed(2) + ". Ban dang thieu can, om va gay";
       } else if ((BMI > 18.5) & (BMI < 24.9)) {
-        result.innerHTML = "Ban khoe manh";
+        result.innerHTML = "BMI = " + BMI.toFixed(2) + ". Ban khoe manh";
       } else if ((BMI > 25) & (BMI < 29.9)) {
-        result.innerHTML = "Ban dang hoi nang ki";
+        result.innerHTML = "BMI = " + BMI.toFixed(2) + ". Ban dang hoi nang ki";
       } else if (BMI > 30) {
-        result.innerHTML = "Ban beo phi";
+        result.innerHTML = "BMI = " + BMI.toFixed(2) + ". Ban beo phi";
       }
     }
   </script>
