@@ -41,7 +41,7 @@
         let c = document.getElementById("c").value;
         let result = document.getElementById("result");
         if (a == "" || b == "" || c == "") {
-            result.innerHTML = "Please enter all values";
+            result.innerHTML = "Vui lòng nhập tất cả!";
         } else {
             a = parseInt(a);
             b = parseInt(b);
@@ -49,7 +49,7 @@
             if (a + b > c && a + c > b && b + c > a) {
                 result.innerHTML = "Chu vi tam giác là: " + (a + b + c);
             } else {
-                result.innerHTML = "Không phải  tam giác";
+                result.innerHTML = "Không phải là tam giác";
             }
         }
     }
