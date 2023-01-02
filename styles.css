@@ -35,6 +35,8 @@ body{
 .link-card{
     text-decoration: none;
     color: #000;
+    height: 100%;
+    width: 100%;
     background-color: #fff;
     padding: 10px 20px;
     border-radius: 10px;
@@ -50,10 +52,6 @@ body{
 .link-card:hover{
     box-shadow: 10px 10px 60px #bebebe,
     -10px -10px 60px #ffffff;
-}
-
-.menu-item-content{
-    min-height: 82px;
 }
 
 .result{
